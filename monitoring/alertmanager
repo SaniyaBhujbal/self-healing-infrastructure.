@@ -1,0 +1,11 @@
+route:
+  receiver: nginx-auto-recovery
+  group_wait: 5s
+  group_interval: 30s
+  repeat_interval: 5m
+
+receivers:
+  - name: nginx-auto-recovery
+    webhook_configs:
+      - url: "http://host.docker.internal:5001/webhook"
+        send_resolved: false
